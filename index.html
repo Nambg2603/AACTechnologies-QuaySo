@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quay Thưởng Tết 2026 - Xuân Bính Ngọ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="side-decor left-decor-btn">
+        <div class="decor-circle"><span>TẾT</span></div>
+        <div class="decor-tassel"></div>
+    </div>
+    <div class="side-decor right-decor-btn">
+        <div class="decor-circle"><span>2026</span></div>
+        <div class="decor-tassel"></div>
+    </div>
+
+    <div class="brand-container">
+        <img src="logo2.png" alt="Company Brand" id="topLogo">
+    </div>
+
+    <button id="btnSettings" onclick="toggleSidebar()" title="Menu Hệ Thống">
+        🧧 MENU
+    </button>
+
+    <div class="admin-sidebar" id="adminPanel">
+        <div class="sidebar-header">
+            <h2>QUẢN TRỊ VIÊN</h2>
+            <button onclick="toggleSidebar()" class="close-sidebar">×</button>
+        </div>
+        <div class="sidebar-tabs">
+            <button class="tab-btn active" onclick="switchTab('tab-winners')">KẾT QUẢ</button>
+            <button class="tab-btn" onclick="switchTab('tab-config')">CẤU HÌNH</button>
+        </div>
+
+        <div id="tab-winners" class="tab-content active">
+            <div id="winnersList" class="winners-scroll">
+                <div style="text-align: center; color: #ffcccb; margin-top: 20px;">Chưa có dữ liệu</div>
+            </div>
+        </div>
+
+        <div id="tab-config" class="tab-content">
+            <div class="status-panel">
+                <div class="status-item" id="st-config"><span class="label">📂 Config:</span> <span class="val loading">...</span></div>
+                <div class="status-item" id="st-users"><span class="label">👥 Nhân sự:</span> <span class="val loading">...</span></div>
+                <div class="status-item"><span class="label">💾 Lưu trữ:</span> <span class="val success">Tự động</span></div>
+            </div>
+            <div class="admin-controls">
+                <button id="btnExport" class="btn-action btn-success" onclick="exportWinners()" disabled>
+                    📥 Xuất CSV
+                </button>
+                <button class="btn-action btn-danger" onclick="resetAll()">
+                    ⚠ Xóa Dữ Liệu & Reset
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-stage">
+        
+        <div class="header-group">
+            <h1 class="main-title">CHÀO XUÂN 2026</h1>
+            <div class="sub-title">XUÂN BÍNH NGỌ - VẠN SỰ NHƯ Ý</div>
+        </div>
+
+        <div class="sphere-container" onclick="spin()">
+            <img src="logo.png" class="center-logo" alt="Logo">
+            <div id="tagCloud"></div>
+        </div>
+
+    </div>
+
+    <button id="btnSpinMain" onclick="spin()" disabled>
+        QUAY THƯỞNG 🌸
+    </button>
+
+    <div id="resultModal" class="modal-overlay">
+        <div class="modal-box tet-border">
+            <div class="modal-header">
+                <h3 id="modalPrizeName">GIẢI THƯỞNG</h3>
+                <div class="rolling-status">Khai Xuân Đắc Lộc</div>
+            </div>
+            
+            <div class="modal-body-scroll">
+                <div class="grid-header-note">DANH SÁCH TRÚNG THƯỞNG</div>
+                <div id="rollingGrid" class="rolling-grid"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnCloseModal" class="btn-modal-action" onclick="closeModal()" disabled>ĐANG QUAY...</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

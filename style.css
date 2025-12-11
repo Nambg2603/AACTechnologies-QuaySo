@@ -1,0 +1,174 @@
+:root {
+    --primary-gold: #ffd700;       
+    --primary-red: #d90429;
+    --dark-bg: #3a0000;
+    --font-tet: 'Great Vibes', cursive; 
+    --font-tech: 'Orbitron', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+
+body {
+    background: radial-gradient(circle at center, #b30000 0%, #4d0000 100%);
+    color: #fff; font-family: 'Roboto', sans-serif;
+    height: 100vh; overflow: hidden; display: flex;
+    background-image: 
+        radial-gradient(circle at 50% 50%, #d90429 0%, #3a0000 100%),
+        linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px, 20px 20px;
+}
+
+/* UI ELEMENTS */
+.brand-container { position: fixed; top: 20px; left: 20px; z-index: 100; }
+#topLogo { height: 70px; width: auto; filter: drop-shadow(0 0 5px #ffd700); }
+
+#btnSettings {
+    position: fixed; top: 20px; right: 20px; z-index: 2000;
+    background: #800000; border: 2px solid var(--primary-gold); color: var(--primary-gold);
+    padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+#btnSettings:hover { background: var(--primary-gold); color: #800000; }
+
+/* SIDE DECOR */
+.side-decor {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    z-index: 10; pointer-events: none;
+}
+.left-decor-btn { left: 30px; } .right-decor-btn { right: 30px; }
+
+.decor-circle {
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, #ff0000, #990000);
+    border: 3px solid var(--primary-gold); border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); animation: pulseDecor 2s infinite;
+}
+.decor-circle span { font-family: var(--font-tech); font-weight: bold; color: var(--primary-gold); font-size: 18px; text-shadow: 1px 1px 2px #000; }
+.decor-tassel { width: 4px; height: 150px; background: var(--primary-gold); margin-top: -2px; position: relative; z-index: -1; }
+.decor-tassel::after { content: ''; position: absolute; bottom: 0; left: -10px; width: 24px; height: 40px; background: #ff0000; border-radius: 5px; }
+@keyframes pulseDecor { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 30px #ffd700; } 100% { transform: scale(1); } }
+
+/* MAIN STAGE */
+.main-stage {
+    flex-grow: 1; position: relative;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start; /* Quan trọng: đẩy lên trên */
+    perspective: 1000px;
+}
+
+.header-group { text-align: center; z-index: 10; margin-top: 30px; margin-bottom: 20px; transition: all 0.3s ease; }
+.main-title {
+    font-family: var(--font-tet); font-size: 90px; color: var(--primary-gold);
+    margin: 0; line-height: 1; text-shadow: 4px 4px 0 #800000, 0 0 30px #ff0000;
+}
+.sub-title { font-family: 'Roboto'; font-size: 22px; color: #ffcccb; letter-spacing: 6px; margin-top: 10px; text-transform: uppercase; }
+
+/* SPHERE CONTAINER */
+.sphere-container {
+    position: relative; 
+    width: 650px; height: 650px; /* Default size */
+    display: flex; justify-content: center; align-items: center;
+    transform-style: preserve-3d; cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), width 0.3s, height 0.3s;
+}
+.sphere-container:hover { transform: scale(1.15) rotateX(5deg); }
+
+.center-logo {
+    position: absolute; width: 300px; height: auto; opacity: 0.9;
+    z-index: 0; pointer-events: none; filter: drop-shadow(0 0 30px #ff0000);
+    animation: float 4s ease-in-out infinite; transition: width 0.3s;
+}
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+#tagCloud { width: 100%; height: 100%; transform-style: preserve-3d; }
+.tag-element {
+    position: absolute; left: 50%; top: 50%;
+    font-size: 16px; font-weight: bold; color: rgba(255, 215, 0, 0.7);
+    white-space: nowrap; will-change: transform, opacity; transition: color 0.3s;
+}
+.sphere-container:hover .tag-element { color: #fff !important; text-shadow: 0 0 10px #ffd700; }
+
+/* BTN SPIN */
+#btnSpinMain {
+    position: fixed; bottom: 40px; left: 40px;
+    padding: 15px 50px;
+    background: linear-gradient(to bottom, #ff3333, #b30000);
+    border: 2px solid var(--primary-gold); border-radius: 50px;
+    color: var(--primary-gold); font-family: var(--font-tech); font-size: 24px; font-weight: 900;
+    cursor: pointer; box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); z-index: 100;
+    transition: 0.2s;
+}
+#btnSpinMain:hover:not(:disabled) { transform: scale(1.05); background: #fff; color: #b30000; box-shadow: 0 0 50px #fff; }
+#btnSpinMain:disabled { background: #333; border-color: #555; color: #777; box-shadow: none; cursor: not-allowed; }
+
+/* SIDEBAR & MODAL (Giữ nguyên style cơ bản) */
+.admin-sidebar { position: fixed; top: 0; left: -400px; width: 400px; height: 100vh; background: rgba(50, 0, 0, 0.98); border-right: 2px solid var(--primary-gold); padding: 20px; transition: left 0.4s; z-index: 2100; display: flex; flex-direction: column; }
+.admin-sidebar.active { left: 0; }
+.sidebar-header { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--primary-gold); border-bottom: 1px solid #555; padding-bottom: 10px; }
+.sidebar-tabs { display: flex; gap: 5px; margin-bottom: 15px; }
+.tab-btn { flex: 1; padding: 10px; background: #330000; color: #aaa; border: 1px solid #555; cursor: pointer; }
+.tab-btn.active { background: var(--primary-gold); color: #800000; font-weight: bold; }
+.tab-content { display: none; flex-grow: 1; overflow-y: auto; flex-direction: column; }
+.tab-content.active { display: flex; }
+.btn-action { width: 100%; padding: 15px; margin-top: 10px; background: transparent; border: 1px solid #aaa; color: #fff; cursor: pointer; font-weight: bold; }
+.winner-card { background: rgba(255, 215, 0, 0.1); border-left: 4px solid var(--primary-gold); padding: 10px; margin-bottom: 8px; }
+.winner-card .w-name { font-weight: bold; color: #fff; } .winner-card .w-id { color: #ffd700; font-size: 13px; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; justify-content: center; align-items: center; }
+.modal-box { width: 95vw; height: 85vh; background: #2b0505; border: 3px solid var(--primary-gold); border-radius: 10px; box-shadow: 0 0 80px rgba(255, 0, 0, 0.6); display: flex; flex-direction: column; animation: zoomIn 0.3s; }
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-header { padding: 20px; text-align: center; background: linear-gradient(90deg, #500000, #800000, #500000); border-bottom: 2px solid var(--primary-gold); }
+.modal-header h3 { font-family: var(--font-tech); font-size: 40px; color: var(--primary-gold); margin: 0; }
+.rolling-status { color: #aaa; margin-top: 5px; font-style: italic; }
+.modal-body-scroll { flex-grow: 1; padding: 20px; overflow: hidden; display: flex; flex-direction: column; }
+.grid-header-note { text-align: center; color: var(--primary-gold); font-size: 20px; margin-bottom: 15px; border-bottom: 1px solid #800000; padding-bottom: 10px; font-weight: bold; }
+.rolling-grid { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; justify-content: flex-end; }
+.rolling-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; height: 85px; transition: all 0.8s ease; }
+.grid-winner-item { background: linear-gradient(135deg, #800000, #400000); border: 1px solid var(--primary-gold); border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.gw-name { font-family: var(--font-tech); font-size: 18px; color: #fff; font-weight: 900; margin-bottom: 5px; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px;}
+.gw-id { color: #ffd700; font-weight: bold; }
+@keyframes flash { 0% { background: #fff700; transform: scale(1.1); } 100% { background: linear-gradient(135deg, #800000, #400000); transform: scale(1); } }
+.row-enter .grid-winner-item { animation: flash 1.5s ease-out forwards; }
+.row-enter { animation: fadeInUp 0.8s ease forwards; }
+.row-exit { animation: fadeOutUp 0.8s ease forwards; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeOutUp { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-80px); } }
+.modal-footer { padding: 20px; background: #1a0000; border-top: 2px solid var(--primary-gold); display: flex; justify-content: center; }
+.btn-modal-action { padding: 12px 60px; background: var(--primary-gold); color: #800000; font-weight: bold; border-radius: 30px; font-size: 18px; border: none; cursor: pointer; opacity: 0.5; }
+.btn-modal-action.active { opacity: 1; box-shadow: 0 0 20px #ffd700; }
+
+/* =========================================================
+   PHẦN QUAN TRỌNG: RESPONSIVE ĐỂ KHÔNG BỊ ĐÈ CHỮ
+   ========================================================= */
+
+/* Màn hình Laptop (Height < 800px) */
+@media screen and (max-height: 800px) {
+    .main-stage { padding-top: 20px; }
+    .main-title { font-size: 60px; } /* Giảm cỡ chữ tiêu đề */
+    .sub-title { font-size: 18px; margin-top: 5px; letter-spacing: 3px; }
+    
+    .sphere-container { 
+        width: 450px; height: 450px; /* Thu nhỏ vòng xoay đáng kể */
+    }
+    .center-logo { width: 200px; } /* Thu nhỏ logo giữa */
+    
+    #topLogo { height: 50px; } /* Thu nhỏ logo góc trái */
+    .decor-circle { width: 60px; height: 60px; } /* Thu nhỏ trang trí */
+    .decor-tassel { height: 100px; }
+    
+    #btnSpinMain { 
+        bottom: 20px; left: 20px; 
+        padding: 10px 30px; font-size: 18px; 
+    }
+}
+
+/* Màn hình rất thấp (Height < 650px - ví dụ máy chiếu cũ) */
+@media screen and (max-height: 650px) {
+    .main-title { font-size: 50px; }
+    .sphere-container { width: 350px; height: 350px; }
+    .center-logo { width: 160px; }
+}
