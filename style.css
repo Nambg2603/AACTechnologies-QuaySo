@@ -34,41 +34,70 @@ body {
 }
 .img-left {
     left: 0; 
-    top: 0%; 
+    top: 50%; 
     transform: translateY(-50%); 
-    height: 500px;
+    height: 450px;
     animation: floatTop 3s ease-in-out infinite;
 
 }
 /* ảnh 2026 */
 .img-left-bottom {
     left: 0; 
-    top: 65%; /* Vị trí đặt ảnh thấp xuống bên dưới */
+    top: 0%; /* Vị trí đặt ảnh thấp xuống bên dưới */
     transform: translateY(-50%); 
-    height: 250px; /* Bạn có thể chỉnh chiều cao ảnh tùy ý tại đây */
-    animation: floatTop 3s ease-in-out infinite; /* Giữ nguyên hiệu ứng bay nhẹ */
+    height: 450px; /* Bạn có thể chỉnh chiều cao ảnh tùy ý tại đây */
+animation: floatTop 3s ease-in-out infinite;
+
 }
 .img-right {
     right: 0; 
-    top: 55%; 
+    top: 50%; 
     transform: translateY(-50%);
-    height: 400px; /* Tăng giảm số này tùy ý */
+    height: 450px; /* Tăng giảm số này tùy ý */
     animation: floatTop 3s ease-in-out infinite;
 }
 .img-top-right {
-    top: 0;
+    top: 10%;
     right: 0; 
-    height: 400px; 
+    height: 200px; 
+    width: auto;
+    z-index: 1500; 
+}
+.img-top2-right {
+    top: 0%;
+    right: 0; 
+    height:800px; 
     width: auto;
     z-index: 1500; 
     animation: floatTop 3s ease-in-out infinite;
+
 }
 @keyframes floatTop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-
+/*
+#btnSpinMain {
+    position: fixed; bottom: 70px; left: 200px;
+    padding: 15px 50px;
+    background: linear-gradient(to bottom, #ff3333, #b30000);
+    border: 2px solid var(--primary-gold); border-radius: 50px;
+    color: var(--primary-gold); font-family: var(--font-tech); font-size: 24px; font-weight: 800;
+    cursor: pointer; box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); z-index: 100;
+    transition: 0.2s;
+    animation: floatTop 3s ease-in-out infinite;
+     filter: drop-shadow(0 0 5px #ffd700);
+}*/
 /* --- 2. UI CƠ BẢN --- */
-.brand-container { position: fixed; top: 20px; left: 20px; z-index: 100; }
-#topLogo { height: 70px; width: auto; filter: drop-shadow(0 0 5px #ffd700); }
+.brand-container { 
+    position: fixed; 
+    top: 20px; 
+    left: 20px; /* <-- ĐÃ SỬA: Thay 20px thành 200px */
+    z-index: 100; 
+}
+#topLogo { 
+    height: 50px; /* Mình để 70px cho rõ, bạn thích nhỏ thì sửa thành 40px */
+    width: auto;
+    filter: drop-shadow(0 0 5px #ffd700);
+    
+ }
 
 #btnSettings {
     position: fixed; top: 20px; right: 20px; z-index: 2000;
@@ -131,6 +160,7 @@ body {
     display: flex; justify-content: center; align-items: center;
     transform-style: preserve-3d; cursor: pointer;
     margin-top: 0px; 
+    margin-left: -130px;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .sphere-container:hover { transform: scale(1.15) rotateX(5deg); }
@@ -141,7 +171,7 @@ body {
     opacity: 0.9;
     z-index: 0; pointer-events: none; 
     filter: drop-shadow(0 0 30px #ff0000);
-    left: 60%; 
+    left: 58%; 
     top: 50%;
     transform: translate(-50%, -50%);
     
@@ -163,14 +193,13 @@ body {
 
 /* NÚT QUAY */
 #btnSpinMain {
-    position: fixed; bottom: 70px; left: 200px;
+    position: fixed; bottom: 50px; left: 100px;
     padding: 15px 50px;
     background: linear-gradient(to bottom, #ff3333, #b30000);
     border: 2px solid var(--primary-gold); border-radius: 50px;
     color: var(--primary-gold); font-family: var(--font-tech); font-size: 24px; font-weight: 800;
     cursor: pointer; box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); z-index: 100;
     transition: 0.2s;
-    animation: floatTop 3s ease-in-out infinite;
 }
 #btnSpinMain:hover:not(:disabled) { transform: scale(1.05); background: #fff; color: #b30000; box-shadow: 0 0 50px #fff; }
 #btnSpinMain:disabled { background: #333; border-color: #555; color: #777; box-shadow: none; cursor: not-allowed; }
