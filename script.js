@@ -2,7 +2,7 @@
 
 // --- CẤU HÌNH HỆ THỐNG ---
 const CONFIG = {
-    SPIN_TIME: 10000,        // Thời gian quay (3 giây)
+    SPIN_TIME: 30000,        // Thời gian quay (3 giây)
     SCROLL_SPEED: 1500,     // Tốc độ cuộn dòng kết quả
     MAX_VISUAL_TAGS: 200,   // Giới hạn visual
     GRID_COLS: 8            // Số cột hiển thị
