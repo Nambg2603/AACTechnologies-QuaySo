@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quay Thưởng Tết 2026 - Xuân Bính Ngọ</title>
+    <title>AACTechnologies-Quay thưởng tết</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -12,14 +12,9 @@
 </head>
 <body>
 
-    <div class="side-decor left-decor-btn">
-        <div class="decor-circle"><span>TẾT</span></div>
-        <div class="decor-tassel"></div>
-    </div>
-    <div class="side-decor right-decor-btn">
-        <div class="decor-circle"><span>2026</span></div>
-        <div class="decor-tassel"></div>
-    </div>
+    <img src="anh1.png" class="decor-img side-img img-left" alt="Decor Left">
+    <img src="anh2.png" class="decor-img side-img img-right" alt="Decor Right">
+    <img src="anh3.png" class="decor-img img-top-right" alt="Decor Top Right">
 
     <div class="brand-container">
         <img src="logo2.png" alt="Company Brand" id="topLogo">
@@ -34,29 +29,36 @@
             <h2>QUẢN TRỊ VIÊN</h2>
             <button onclick="toggleSidebar()" class="close-sidebar">×</button>
         </div>
+        
         <div class="sidebar-tabs">
-            <button class="tab-btn active" onclick="switchTab('tab-winners')">KẾT QUẢ</button>
+            <button class="tab-btn active" onclick="switchTab('tab-winners')">DANH SÁCH</button>
             <button class="tab-btn" onclick="switchTab('tab-config')">CẤU HÌNH</button>
         </div>
 
         <div id="tab-winners" class="tab-content active">
             <div id="winnersList" class="winners-scroll">
-                <div style="text-align: center; color: #ffcccb; margin-top: 20px;">Chưa có dữ liệu</div>
+                <div style="text-align: center; color: #ffcccb; margin-top: 20px;">Chưa có kết quả</div>
             </div>
         </div>
 
         <div id="tab-config" class="tab-content">
             <div class="status-panel">
-                <div class="status-item" id="st-config"><span class="label">📂 Config:</span> <span class="val loading">...</span></div>
-                <div class="status-item" id="st-users"><span class="label">👥 Nhân sự:</span> <span class="val loading">...</span></div>
-                <div class="status-item"><span class="label">💾 Lưu trữ:</span> <span class="val success">Tự động</span></div>
+                <div class="status-item" id="st-config"><span class="label">📂 Config:</span> <span class="val loading">Checking...</span></div>
+                <div class="status-item" id="st-users"><span class="label">👥 Nhân sự:</span> <span class="val loading">Checking...</span></div>
+                <div class="status-item" style="align-items: center; margin-top: 15px; border-top: 1px dashed #555; padding-top: 10px;">
+                <span class="label" style="color: #ffaa00; font-weight: bold;">✨ Chế độ Lộc Bất Ngờ:</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggleLucky" onchange="toggleLuckyBtn()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
             </div>
             <div class="admin-controls">
                 <button id="btnExport" class="btn-action btn-success" onclick="exportWinners()" disabled>
-                    📥 Xuất CSV
+                    📥 Xuất Excel Ngay
                 </button>
                 <button class="btn-action btn-danger" onclick="resetAll()">
-                    ⚠ Xóa Dữ Liệu & Reset
+                    ⚠ Reset Dữ Liệu
                 </button>
             </div>
         </div>
@@ -65,17 +67,19 @@
     <div class="main-stage">
         
         <div class="header-group">
-            <h1 class="main-title">CHÀO XUÂN 2026</h1>
-            <div class="sub-title">XUÂN BÍNH NGỌ - VẠN SỰ NHƯ Ý</div>
+            <div class="sub-title">Công ty TNHH AAC Technologies Việt Nam</div>
+            <h1 class="main-title">Happy New Year</h1>
         </div>
 
-        <div class="sphere-container" onclick="spin()">
-            <img src="logo.png" class="center-logo" alt="Logo">
+        <div class="sphere-container" id="interactiveSphere" onclick="spin()">
+            <img src="logo.png" class="center-logo" alt="Logo Center">
             <div id="tagCloud"></div>
         </div>
 
     </div>
-
+    <button id="btnLucky" onclick="spinLucky()" style="display: none;">
+    ✨ LỘC BẤT NGỜ
+    </button>
     <button id="btnSpinMain" onclick="spin()" disabled>
         QUAY THƯỞNG 🌸
     </button>
@@ -84,7 +88,6 @@
         <div class="modal-box tet-border">
             <div class="modal-header">
                 <h3 id="modalPrizeName">GIẢI THƯỞNG</h3>
-                <div class="rolling-status">Khai Xuân Đắc Lộc</div>
             </div>
             
             <div class="modal-body-scroll">
