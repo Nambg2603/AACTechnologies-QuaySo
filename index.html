@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AACTechnologies-Quay thưởng tết</title>
+    <title>AACTechnologies - Quay thưởng Tết 2026</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -12,20 +12,24 @@
 </head>
 <body>
 
-    <img src="anh1.png" class="decor-img side-img img-left" alt="Decor Left">
-    <img src="anh3.png" class="decor-img side-img img-left-bottom" alt="Decor Left Bottom">
-    <img src="anh2.png" class="decor-img side-img img-right" alt="Decor Right">
-    <img src="anh5.png" class="decor-img img-top2-right" alt="Decor Top Right">
-    <img src="anh4.png" class="decor-img img-top-right" alt="Decor Top Right">
+    <!-- Ảnh trang trí -->
+    <img src="anh1.png" class="decor-img side-img img-left" alt="Hoa Mai Trái">
+    <img src="anh3.png" class="decor-img side-img img-left-bottom" alt="Năm Mới 2026">
+    <img src="anh2.png" class="decor-img side-img img-right" alt="Hoa Mai Phải">
+    <img src="anh5.png" class="decor-img img-top2-right" alt="Hoa Đào">
+    <img src="anh4.png" class="decor-img img-top-right" alt="Lì Xì">
 
+    <!-- Logo công ty -->
     <div class="brand-container">
-        <img src="logo2.png" alt="Company Brand" id="topLogo">
+        <img src="logo2.png" alt="AAC Technologies" id="topLogo">
     </div>
 
+    <!-- Nút Menu -->
     <button id="btnSettings" onclick="toggleSidebar()" title="Menu Hệ Thống">
         🧧 MENU
     </button>
 
+    <!-- Sidebar Quản trị -->
     <div class="admin-sidebar" id="adminPanel">
         <div class="sidebar-header">
             <h2>QUẢN TRỊ VIÊN</h2>
@@ -39,33 +43,43 @@
 
         <div id="tab-winners" class="tab-content active">
             <div id="winnersList" class="winners-scroll">
-                <div style="text-align: center; color: #ffcccb; margin-top: 20px;">Chưa có kết quả</div>
+                <!-- Danh sách trúng thưởng sẽ hiện ở đây -->
             </div>
         </div>
 
         <div id="tab-config" class="tab-content">
             <div class="status-panel">
-                <div class="status-item" id="st-config"><span class="label">📂 Config:</span> <span class="val loading">Checking...</span></div>
-                <div class="status-item" id="st-users"><span class="label">👥 Nhân sự:</span> <span class="val loading">Checking...</span></div>
+                <div class="status-item" id="st-config">
+                    <span class="label">📂 Config:</span> 
+                    <span class="val loading">Đang kiểm tra...</span>
+                </div>
+                <div class="status-item" id="st-users">
+                    <span class="label">👥 Nhân sự:</span> 
+                    <span class="val loading">Đang kiểm tra...</span>
+                </div>
                 <div class="status-item" style="align-items: center; margin-top: 15px; border-top: 1px dashed #555; padding-top: 10px;">
-                <span class="label" style="color: #ffaa00; font-weight: bold;">✨ Chế độ Lộc Bất Ngờ:</span>
-                <label class="switch">
-                    <input type="checkbox" id="toggleLucky" onchange="toggleLuckyBtn()">
-                    <span class="slider round"></span>
-                </label>
-            </div>
+                    <span class="label" style="color: #ffaa00; font-weight: bold;">✨ Chế độ Lộc Bất Ngờ:</span>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleLucky" onchange="toggleLuckyBtn()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
             </div>
             <div class="admin-controls">
                 <button id="btnExport" class="btn-action btn-success" onclick="exportWinners()" disabled>
-                    📥 Xuất Excel Ngay
+                    📥 Xuất Excel
                 </button>
-                <button class="btn-action btn-danger" onclick="resetAll()">
-                    ⚠ Reset Dữ Liệu
+                <button class="btn-action btn-warning" onclick="confirmNewSession()">
+                    🆕 Bắt Đầu Mới
+                </button>
+                <button class="btn-action btn-danger" onclick="confirmResetAll()">
+                    ⚠ Reset Toàn Bộ
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Main Stage -->
     <div class="main-stage">
         
         <div class="header-group">
@@ -73,19 +87,25 @@
             <h1 class="main-title">Happy New Year</h1>
         </div>
 
+        <!-- Sphere chính -->
         <div class="sphere-container" id="interactiveSphere" onclick="spin()">
-            <img src="logo.png" class="center-logo" alt="Logo Center">
+            <img src="logo.png" class="center-logo" alt="Logo AAC">
             <div id="tagCloud"></div>
         </div>
 
     </div>
+
+    <!-- Nút Lộc Bất Ngờ -->
     <button id="btnLucky" onclick="spinLucky()" style="display: none;">
-    ✨ LỘC BẤT NGỜ
+        ✨ LỘC BẤT NGỜ
     </button>
+
+    <!-- Nút Quay Chính -->
     <button id="btnSpinMain" onclick="spin()" disabled>
         QUAY THƯỞNG 🌸
     </button>
 
+    <!-- Modal hiển thị kết quả -->
     <div id="resultModal" class="modal-overlay">
         <div class="modal-box tet-border">
             <div class="modal-header">
@@ -103,6 +123,7 @@
         </div>
     </div>
 
+    <!-- Script chính -->
     <script src="script.js"></script>
 </body>
 </html>
