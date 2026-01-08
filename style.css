@@ -337,10 +337,18 @@ body {
     letter-spacing: 6px;
     text-transform: uppercase;
     display: block;
-    margin-top: 10px;
-    margin-bottom: 60px;
+    margin-top: 5px;
+    margin-bottom: 40px;
 }
-
+.sub-title1 {
+    font-family: 'Roboto';
+    font-size: 30px;
+    color: #ffcccb;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 10px;
+}
 /* --- SPHERE CONTAINER --- */
 .sphere-container {
     position: relative; 

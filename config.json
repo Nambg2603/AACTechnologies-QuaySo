@@ -1,5 +1,5 @@
 [
-  { "id": "giai_kk", "name": "Giải Khuyến Khích", "quantity": 350, "order": 1 },
+  { "id": "giai_kk", "name": "Danh sách may mắn", "quantity": 350, "order": 1 },
   { "id": "giai_3", "name": "Giải Ba", "quantity": 3, "order": 2 },
   { "id": "giai_2", "name": "Giải Nhì", "quantity": 2, "order": 3 },
   { "id": "giai_1", "name": "Giải Nhất", "quantity": 1, "order": 4 },

@@ -359,7 +359,7 @@ function startRollingEffect(list, title) {
         dom.rollingGrid.appendChild(rowDiv);
         
         const rows = dom.rollingGrid.getElementsByClassName('rolling-row');
-        if (rows.length > 5) {
+        if (rows.length > 7) {
             const firstRow = rows[0];
             firstRow.classList.remove('row-enter');
             firstRow.classList.add('row-exit');
